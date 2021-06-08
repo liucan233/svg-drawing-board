@@ -1,0 +1,4 @@
+.drawing-box > svg {
+  width: 100%;
+  height: calc(100vh - 17px);
+}
