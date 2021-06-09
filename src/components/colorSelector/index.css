@@ -1,0 +1,12 @@
+.color-selector {
+  flex-shrink: 0;
+}
+.color-selector > span {
+  margin: 12px 15px;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  vertical-align: bottom;
+  cursor: pointer;
+}

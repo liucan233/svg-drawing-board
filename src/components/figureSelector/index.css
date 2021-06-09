@@ -1,0 +1,11 @@
+.figure-selector {
+  flex-shrink: 0;
+}
+
+.figure-selector > svg {
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  box-sizing: border-box;
+  vertical-align: top;
+}

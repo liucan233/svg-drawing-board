@@ -1,4 +1,10 @@
+.drawing-box {
+  height: 100vh;
+  background-color: #f9f4ef;
+}
+
 .drawing-box > svg {
   width: 100%;
-  height: calc(100vh - 17px);
+  height: 100%;
+  box-sizing: border-box;
 }

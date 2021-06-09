@@ -57,6 +57,7 @@ function DrawingBox() {
       <svg
         onMouseDown={handleMouseDown}
         onMouseUp={handleMoseUp}
+        onMouseLeave={handleMoseUp}
         onMouseMove={onPainting ? handleMouseMove : null}
       >
         {figures.map((item, index) => {

@@ -20,13 +20,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "prettier"
-    ]
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",

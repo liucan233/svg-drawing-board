@@ -1,0 +1,34 @@
+.props-selector {
+  flex-shrink: 0;
+  font-size: 17px;
+  color: #020826;
+}
+.props-selector > span {
+  margin: 0 10px;
+}
+.props-stroke {
+  line-height: 53px;
+  position: relative;
+}
+.props-stroke > input {
+  width: 35px;
+  vertical-align: text-top;
+  font-size: 16px;
+}
+
+.props-fill > input {
+  margin: 0;
+  width: 19px;
+  height: 19px;
+  vertical-align: text-bottom;
+}
+
+.props-clear {
+  cursor: pointer;
+  color: #f25042;
+}
+
+.props-clear:hover {
+  color: #e0857b;
+  transition: color ease-in 0.2s;
+}
