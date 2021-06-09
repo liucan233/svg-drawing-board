@@ -1,5 +1,5 @@
 import "./App.css";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import ToolBar from "./components/controlsBar";
 import DrawingBox from "./components/drawingBox";
 

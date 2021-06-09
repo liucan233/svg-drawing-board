@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function DrawingBox() {
   const [figures, setFigures] = useState([]);
