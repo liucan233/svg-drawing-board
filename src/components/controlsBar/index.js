@@ -4,14 +4,14 @@ import ColorSelector from "../colorSelector";
 import FigureSelector from "../figureSelector";
 import PropsSelector from "../propsSelector";
 
-function ToolBar() {
+function ToolBar({ svgStyle, setProps }) {
   return (
     <div className="tool-bar">
-      <ColorSelector />
+      <ColorSelector setProps={setProps} svgStyle={svgStyle} />
       <span className="tool-space" />
-      <FigureSelector />
+      <FigureSelector setProps={setProps} svgStyle={svgStyle} />
       <span className="tool-space" />
-      <PropsSelector />
+      <PropsSelector setProps={setProps} svgStyle={svgStyle} />
     </div>
   );
 }

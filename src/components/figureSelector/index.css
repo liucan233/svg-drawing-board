@@ -8,4 +8,7 @@
   margin: 10px;
   box-sizing: border-box;
   vertical-align: top;
+  cursor: pointer;
+  border-bottom-width: 0;
+  transition: border-bottom-width ease-in-out 0.1s;
 }

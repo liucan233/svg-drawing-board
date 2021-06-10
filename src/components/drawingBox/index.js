@@ -1,25 +1,41 @@
 import "./index.css";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import ToolBar from "../controlsBar";
+import { createLine, renderLine } from "../../utils/createLineUtil";
+import { createPath, renderPath } from "../../utils/createPathUtil";
 
 function DrawingBox() {
   const [figures, setFigures] = useState([]);
   const [onPainting, changePainting] = useState(false);
+  const [drawingProps, setDrawingProps] = useState({
+    type: "path",
+    color: "orange",
+    width: 5,
+    fill: "transparent",
+  });
 
-  function handleMouseDown(e) {
+  function handelMouseDown(e) {
+    changePainting(true);
     const { nativeEvent } = e;
+    const { color, width, fill } = drawingProps;
     figures.push({
-      type: "line",
+      type: drawingProps.type,
+      key: Date.now(),
+      color,
+      width,
+      fill,
+      downX: nativeEvent.offsetX,
+      downY: nativeEvent.offsetY,
       path: `M${nativeEvent.offsetX} ${nativeEvent.offsetY}`,
     });
-    changePainting(true);
   }
 
   function handleMouseMove(e) {
-    const { nativeEvent } = e;
-    const topSvgChild = figures.pop();
-    topSvgChild.path += `L${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
-    figures.push(topSvgChild);
-    setFigures([...figures]);
+    let handleDrawing = function () {};
+    const { type } = drawingProps;
+    if (type === "path") handleDrawing = createPath;
+    else if (type === "line") handleDrawing = createLine;
+    handleDrawing(e, figures, setFigures);
   }
 
   function handleMoseUp() {
@@ -27,25 +43,11 @@ function DrawingBox() {
   }
 
   function createSvgChild(item, index) {
-    const { type, path } = item;
-    switch (type) {
-      case "line":
-        return (
-          <path
-            stroke="orange"
-            strokeWidth="5"
-            fill="transparent"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d={path}
-            key={index}
-          />
-        );
-      // case 'circle':
-
-      default:
-        return;
-    }
+    const { type } = item;
+    let getPath = function () {};
+    if (type === "path") getPath = renderPath;
+    else if (type === "line") getPath = renderLine;
+    return getPath(item);
   }
 
   // useEffect(function () {
@@ -53,18 +55,21 @@ function DrawingBox() {
   // },[figures])
 
   return (
-    <div className="drawing-box">
-      <svg
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMoseUp}
-        onMouseLeave={handleMoseUp}
-        onMouseMove={onPainting ? handleMouseMove : null}
-      >
-        {figures.map((item, index) => {
-          return createSvgChild(item, index);
-        })}
-      </svg>
-    </div>
+    <Fragment>
+      <div className="drawing-box">
+        <svg
+          onMouseUp={handleMoseUp}
+          onMouseLeave={handleMoseUp}
+          onMouseDown={handelMouseDown}
+          onMouseMove={onPainting ? handleMouseMove : null}
+        >
+          {figures.map((item, index) => {
+            return createSvgChild(item, index);
+          })}
+        </svg>
+      </div>
+      <ToolBar svgStyle={drawingProps} setProps={setDrawingProps} />
+    </Fragment>
   );
 }
 export default DrawingBox;

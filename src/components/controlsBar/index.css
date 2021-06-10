@@ -46,8 +46,8 @@
 }
 
 .item-active {
-  border-bottom: #e82a2a solid 3px;
-  transition: border-bottom-width ease-in 0.3s;
+  border-bottom: #e82a2a solid 2px !important;
+  /*transition: border-bottom-width ease-in 0.1s;*/
 }
 .tool-space {
   flex-shrink: 0;

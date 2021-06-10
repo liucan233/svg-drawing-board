@@ -1,18 +1,29 @@
 import "./index.css";
 import React, { useState } from "react";
 
-function ColorSelector() {
+function ColorSelector({ svgStyle, setProps }) {
   let [colors, setColors] = useState([
-    "#f25042",
+    "#ff776d",
     "#020826",
     "#8c7851",
     "#008eff",
     "orange",
   ]);
+  function handleClick({ target }) {
+    const { dataset } = target;
+    if (!dataset.color) return;
+    setProps({ ...svgStyle, color: dataset.color });
+  }
   return (
-    <div className="color-selector">
+    <div className="color-selector" onClick={handleClick}>
       {colors.map((item, index) => {
-        return <span style={{ backgroundColor: item }} key={index} />;
+        return (
+          <span
+            style={{ backgroundColor: item }}
+            data-color={item}
+            key={index}
+          />
+        );
       })}
     </div>
   );
