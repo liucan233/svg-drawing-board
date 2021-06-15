@@ -1,14 +1,44 @@
 import "./index.css";
-import React from "react";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import MoreSetting from "../moreSetting";
 
-function PropsSelector() {
+function PropsSelector({ svgStyle, setProps }) {
+  const [width, setWidth] = useState("5");
+  const [show, setShowMore] = useState(false);
+
+  function handleOnchange({ target }) {
+    setWidth(target.value);
+  }
+
+  function handleBlur({ target }) {
+    if (!target.value) setWidth(svgStyle.width);
+    else {
+      const newWidth = Number(target.value);
+      setProps({ ...svgStyle, width: newWidth });
+    }
+  }
+
+  function handleShow() {
+    console.log(ReactDOM);
+    // ReactDOM.createPortal(MoreSetting,);
+  }
+
   return (
     <div className="props-selector">
       <span className="props-stroke">
         <label htmlFor="stroke-width">
           <span>线宽：</span>
         </label>
-        <input id="stroke-width" type="number" max={20} min={1} />
+        <input
+          value={width}
+          id="stroke-width"
+          onBlur={handleBlur}
+          onChange={handleOnchange}
+          type="number"
+          max={20}
+          min={1}
+        />
       </span>
 
       <span className="props-fill">
@@ -18,7 +48,9 @@ function PropsSelector() {
         <input id="fill" type="checkbox" />
       </span>
 
-      <span className="props-clear">更多</span>
+      <span onClick={handleShow} className="props-clear">
+        更多
+      </span>
     </div>
   );
 }
