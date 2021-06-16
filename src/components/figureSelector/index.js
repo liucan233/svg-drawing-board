@@ -33,8 +33,8 @@ function FigureSelector({ svgStyle, setProps }) {
         viewBox="0 0 1024 1024"
         fill={svgStyle.color}
         xmlns="http://www.w3.org/2000/svg"
-        data-type="cicle"
-        className={active === "cicle" ? "item-active" : ""}
+        data-type="circle"
+        className={active === "circle" ? "item-active" : ""}
       >
         <path d="M511.99 960.22C264.84 960.22 63.77 759.15 63.77 512S264.84 63.78 511.99 63.78 960.23 264.85 960.23 512 759.14 960.22 511.99 960.22z m0-823.81C304.88 136.41 136.4 304.89 136.4 512s168.48 375.59 375.59 375.59c207.13 0 375.61-168.48 375.61-375.59S719.12 136.41 511.99 136.41z" />
       </svg>

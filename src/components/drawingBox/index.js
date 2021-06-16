@@ -4,6 +4,8 @@ import ToolBar from "../controlsBar";
 import { createLine, renderLine } from "../../utils/createLineUtil";
 import { createPath, renderPath } from "../../utils/createPathUtil";
 import { createRect, renderRect } from "../../utils/createRectUtil";
+import { createCircle, renderCircle } from "../../utils/createCircleUtil";
+import { createTriangle, renderTriangle } from "../../utils/createTriangleUtil";
 
 function DrawingBox() {
   const [figures, setFigures] = useState([]);
@@ -37,6 +39,8 @@ function DrawingBox() {
     if (type === "path") handleDrawing = createPath;
     else if (type === "line") handleDrawing = createLine;
     else if (type === "rect") handleDrawing = createRect;
+    else if (type === "circle") handleDrawing = createCircle;
+    else if (type === "triangle") handleDrawing = createTriangle;
     handleDrawing(e, figures);
     setFigures([...figures]);
   }
@@ -51,6 +55,8 @@ function DrawingBox() {
     if (type === "path") getPath = renderPath;
     else if (type === "line") getPath = renderLine;
     else if (type === "rect") getPath = renderRect;
+    else if (type === "circle") getPath = renderCircle;
+    else if (type === "triangle") getPath = renderTriangle;
     return getPath(item);
   }
 
