@@ -1,9 +1,8 @@
-function createPath(e, figures, setFigures) {
+function createPath(e, figures) {
   const { nativeEvent } = e;
   const topSvgChild = figures.pop();
   topSvgChild.path += `L${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
   figures.push(topSvgChild);
-  setFigures([...figures]);
 }
 
 function renderPath(figure) {

@@ -3,6 +3,7 @@ import React, { Fragment, useState } from "react";
 import ToolBar from "../controlsBar";
 import { createLine, renderLine } from "../../utils/createLineUtil";
 import { createPath, renderPath } from "../../utils/createPathUtil";
+import { createRect, renderRect } from "../../utils/createRectUtil";
 
 function DrawingBox() {
   const [figures, setFigures] = useState([]);
@@ -35,7 +36,9 @@ function DrawingBox() {
     const { type } = drawingProps;
     if (type === "path") handleDrawing = createPath;
     else if (type === "line") handleDrawing = createLine;
-    handleDrawing(e, figures, setFigures);
+    else if (type === "rect") handleDrawing = createRect;
+    handleDrawing(e, figures);
+    setFigures([...figures]);
   }
 
   function handleMoseUp() {
@@ -47,6 +50,7 @@ function DrawingBox() {
     let getPath = function () {};
     if (type === "path") getPath = renderPath;
     else if (type === "line") getPath = renderLine;
+    else if (type === "rect") getPath = renderRect;
     return getPath(item);
   }
 

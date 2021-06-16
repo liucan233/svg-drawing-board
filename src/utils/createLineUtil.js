@@ -1,10 +1,9 @@
-function createLine(e, figures, setFigures) {
+function createLine(e, figures) {
   const { nativeEvent, type } = e;
   const line = figures.pop();
   line.moveX = nativeEvent.offsetX;
   line.moveY = nativeEvent.offsetY;
   figures.push(line);
-  setFigures([...figures]);
 }
 
 function renderLine(figure) {
