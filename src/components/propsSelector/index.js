@@ -24,6 +24,11 @@ function PropsSelector({ svgStyle, setProps }) {
     // ReactDOM.createPortal(MoreSetting,);
   }
 
+  function handleFill({ target }) {
+    if (target.checked) setProps({ ...svgStyle, fill: svgStyle.color });
+    else setProps({ ...svgStyle, fill: "transparent" });
+  }
+
   return (
     <div className="props-selector">
       <span className="props-stroke">
@@ -45,7 +50,7 @@ function PropsSelector({ svgStyle, setProps }) {
         <label htmlFor="fill">
           <span>封闭：</span>
         </label>
-        <input id="fill" type="checkbox" />
+        <input id="fill" type="checkbox" onChange={handleFill} />
       </span>
 
       <span onClick={handleShow} className="props-clear">

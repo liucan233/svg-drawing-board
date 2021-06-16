@@ -21,7 +21,7 @@ function renderCircle(figure) {
       cy={cy}
       key={key}
       stroke={color}
-      fill="transparent"
+      fill={fill}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={width}

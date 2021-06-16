@@ -27,7 +27,7 @@ function renderRect(figure) {
       height={rectHeight}
       key={key}
       stroke={color}
-      fill="transparent"
+      fill={fill}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={width}

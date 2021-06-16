@@ -6,6 +6,7 @@ import { createPath, renderPath } from "../../utils/createPathUtil";
 import { createRect, renderRect } from "../../utils/createRectUtil";
 import { createCircle, renderCircle } from "../../utils/createCircleUtil";
 import { createTriangle, renderTriangle } from "../../utils/createTriangleUtil";
+import { createBessel, renderBessel } from "../../utils/createBesselUtil";
 
 function DrawingBox() {
   const [figures, setFigures] = useState([]);
@@ -41,6 +42,7 @@ function DrawingBox() {
     else if (type === "rect") handleDrawing = createRect;
     else if (type === "circle") handleDrawing = createCircle;
     else if (type === "triangle") handleDrawing = createTriangle;
+    else if (type === "arc") handleDrawing = createBessel;
     handleDrawing(e, figures);
     setFigures([...figures]);
   }
@@ -57,6 +59,7 @@ function DrawingBox() {
     else if (type === "rect") getPath = renderRect;
     else if (type === "circle") getPath = renderCircle;
     else if (type === "triangle") getPath = renderTriangle;
+    else if (type === "arc") getPath = renderBessel;
     return getPath(item);
   }
 

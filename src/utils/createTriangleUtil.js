@@ -17,7 +17,7 @@ function renderTriangle(figure) {
       key={key}
       stroke={color}
       points={pointsStr}
-      fill="transparent"
+      fill={fill}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={width}

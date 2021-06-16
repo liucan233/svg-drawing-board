@@ -12,6 +12,7 @@ function ColorSelector({ svgStyle, setProps }) {
   function handleClick({ target }) {
     const { dataset } = target;
     if (!dataset.color) return;
+    if (svgStyle.fill !== "transparent") svgStyle.fill = dataset.color;
     setProps({ ...svgStyle, color: dataset.color });
   }
   return (

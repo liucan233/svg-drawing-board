@@ -17,7 +17,7 @@ function renderLine(figure) {
       y2={moveY}
       key={key}
       stroke={color}
-      fill="transparent"
+      fill={fill}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={width}

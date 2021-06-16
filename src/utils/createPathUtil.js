@@ -11,7 +11,7 @@ function renderPath(figure) {
     <path
       stroke={color}
       strokeWidth={width}
-      fill={fill}
+      fill="transparent"
       strokeLinecap="round"
       strokeLinejoin="round"
       d={path}
