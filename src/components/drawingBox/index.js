@@ -18,7 +18,7 @@ function DrawingBox() {
     fill: "transparent",
   });
 
-  function handelMouseDown(e) {
+  function handleMouseDown(e) {
     changePainting(true);
     const { nativeEvent } = e;
     const { color, width, fill } = drawingProps;
@@ -51,7 +51,7 @@ function DrawingBox() {
     changePainting(false);
   }
 
-  function createSvgChild(item, index) {
+  function createSvgChild(item) {
     const { type } = item;
     let getPath = function () {};
     if (type === "path") getPath = renderPath;
@@ -73,7 +73,7 @@ function DrawingBox() {
         <svg
           onMouseUp={handleMoseUp}
           onMouseLeave={handleMoseUp}
-          onMouseDown={handelMouseDown}
+          onMouseDown={handleMouseDown}
           onMouseMove={onPainting ? handleMouseMove : null}
         >
           {figures.map((item, index) => {

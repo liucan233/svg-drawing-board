@@ -1,11 +1,9 @@
 import "./index.css";
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import MoreSetting from "../moreSetting";
+import Modal from "../../utils/modalUtil";
 
 function PropsSelector({ svgStyle, setProps }) {
   const [width, setWidth] = useState("5");
-  const [show, setShowMore] = useState(false);
 
   function handleOnchange({ target }) {
     setWidth(target.value);
@@ -20,8 +18,11 @@ function PropsSelector({ svgStyle, setProps }) {
   }
 
   function handleShow() {
-    console.log(ReactDOM);
-    // ReactDOM.createPortal(MoreSetting,);
+    Modal.moreSetting(handleModal);
+  }
+
+  function handleModal(config) {
+    console.log(config);
   }
 
   function handleFill({ target }) {
