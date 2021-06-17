@@ -57,3 +57,15 @@
   border-radius: 2px;
   background-color: #f39c92;
 }
+
+.more-setting {
+  flex-shrink: 0;
+  cursor: pointer;
+  color: #f25042;
+  line-height: 53px;
+}
+
+.more-setting:hover {
+  color: #e0857b;
+  transition: color ease-in 0.2s;
+}

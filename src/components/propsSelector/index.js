@@ -1,6 +1,5 @@
 import "./index.css";
 import React, { useState } from "react";
-import Modal from "../../utils/modalUtil";
 
 function PropsSelector({ svgStyle, setProps }) {
   const [width, setWidth] = useState("5");
@@ -15,14 +14,6 @@ function PropsSelector({ svgStyle, setProps }) {
       const newWidth = Number(target.value);
       setProps({ ...svgStyle, width: newWidth });
     }
-  }
-
-  function handleShow() {
-    Modal.moreSetting(handleModal);
-  }
-
-  function handleModal(config) {
-    console.log(config);
   }
 
   function handleFill({ target }) {
@@ -52,10 +43,6 @@ function PropsSelector({ svgStyle, setProps }) {
           <span>封闭：</span>
         </label>
         <input id="fill" type="checkbox" onChange={handleFill} />
-      </span>
-
-      <span onClick={handleShow} className="props-clear">
-        更多
       </span>
     </div>
   );

@@ -22,13 +22,3 @@
   height: 19px;
   vertical-align: text-bottom;
 }
-
-.props-clear {
-  cursor: pointer;
-  color: #f25042;
-}
-
-.props-clear:hover {
-  color: #e0857b;
-  transition: color ease-in 0.2s;
-}

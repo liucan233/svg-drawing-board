@@ -9,6 +9,7 @@ function createRect(e, figures) {
 function renderRect(figure) {
   const { key, color, fill, width } = figure;
   let { downX, downY, moveX, moveY } = figure;
+  if (!moveX) return;
   let rectWidth = moveX - downX,
     rectHeight = moveY - downY;
   if (rectWidth < 0) {
@@ -19,6 +20,7 @@ function renderRect(figure) {
     downY += rectHeight;
     rectHeight = -rectHeight;
   }
+  // console.log(rectWidth)
   return (
     <rect
       x={downX}

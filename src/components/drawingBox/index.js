@@ -63,10 +63,6 @@ function DrawingBox() {
     return getPath(item);
   }
 
-  // useEffect(function () {
-  //     console.log('组件更新完成')
-  // },[figures])
-
   return (
     <Fragment>
       <div className="drawing-box">
@@ -81,7 +77,11 @@ function DrawingBox() {
           })}
         </svg>
       </div>
-      <ToolBar svgStyle={drawingProps} setProps={setDrawingProps} />
+      <ToolBar
+        svgStyle={drawingProps}
+        setProps={setDrawingProps}
+        figures={figures}
+      />
     </Fragment>
   );
 }
