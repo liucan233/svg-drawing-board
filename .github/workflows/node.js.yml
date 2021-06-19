@@ -38,10 +38,8 @@ jobs:
         REMOTE_HOST: ${{ secrets.SSH_HOST }}
         # Remote user
         REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-        # Remote port
-        REMOTE_PORT: 22
         # Source directory
-        SOURCE: build/*
+        SOURCE: "build/"
         # Target directory
-        TARGET: /home/liucan/webstorm/svg-drawing-board/
+        TARGET: "/home/liucan/webstorm/svg-drawing-board/"
   
