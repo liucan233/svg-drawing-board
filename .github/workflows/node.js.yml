@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -27,12 +27,25 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: yarn run build
-    
-env:
-
-  DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-  SERVER_PORT: '22'
-  FOLDER: ./build/*
-  SERVER_IP: ${{ secrets.SSH_HOST }}
-  USERNAME: ${{ secrets.SSH_USERNAME }}
-  SERVER_DESTINATION: /home/liucan/webstorm/svg-drawing-board/
+    - name: ssh deploy
+      # You may pin to the exact commit or the version.
+      # uses: easingthemes/ssh-deploy@c711f2c3391cac2876bf4c833590077f02e4bcb8
+      uses: easingthemes/ssh-deploy@v2.2.11
+      with:
+        # Private Key
+        SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+        # Remote host
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        # Remote user
+        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+        # Remote port
+        REMOTE_PORT: 22
+        # Source directory
+        SOURCE: ./build/*
+        # Target directory
+        TARGET: /home/liucan/webstorm/svg-drawing-board/
+        # Arguments to pass to rsync
+        #ARGS: # optional, default is -rltgoDzvO
+        # An array of folder to exclude
+        #EXCLUDE: # optional, default is 
+  
