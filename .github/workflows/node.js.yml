@@ -27,22 +27,22 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: yarn run build
-    - name: ssh deploy
-      # You may pin to the exact commit or the version.
-      # uses: easingthemes/ssh-deploy@c711f2c3391cac2876bf4c833590077f02e4bcb8
-      uses: easingthemes/ssh-deploy@v2.2.11
-      with:
-        # Private Key
-        SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
-        # Remote host
-        REMOTE_HOST: ${{ secrets.SSH_HOST }}
-        # Remote user
-        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-        # Source directory
-        SOURCE: "build/"
-        ARGS: "-rltgoDzvO"
-        # Target directory
-        TARGET: "/home/liucan/webstorm/svg-drawing-board/"
+#     - name: ssh deploy
+#       # You may pin to the exact commit or the version.
+#       # uses: easingthemes/ssh-deploy@c711f2c3391cac2876bf4c833590077f02e4bcb8
+#       uses: easingthemes/ssh-deploy@v2.2.11
+#       with:
+#         # Private Key
+#         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+#         # Remote host
+#         REMOTE_HOST: ${{ secrets.SSH_HOST }}
+#         # Remote user
+#         REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+#         # Source directory
+#         SOURCE: "build/"
+#         ARGS: "-rltgoDzvO"
+#         # Target directory
+#         TARGET: "/home/liucan/webstorm/svg-drawing-board/"
         
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.1
