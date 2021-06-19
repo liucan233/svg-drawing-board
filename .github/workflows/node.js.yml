@@ -41,7 +41,7 @@ jobs:
         # Remote port
         REMOTE_PORT: 22
         # Source directory
-        SOURCE: ./build/*
+        SOURCE: build/*
         # Target directory
         TARGET: /home/liucan/webstorm/svg-drawing-board/
         # Arguments to pass to rsync
