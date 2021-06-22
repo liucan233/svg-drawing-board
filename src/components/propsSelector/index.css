@@ -1,24 +1,28 @@
 .props-selector {
-  flex-shrink: 0;
+  height: 30px;
+  overflow: hidden;
   font-size: 17px;
   color: #020826;
+  position: relative;
+  top: 12px;
 }
 .props-selector > span {
   margin: 0 10px;
-}
-.props-stroke {
-  line-height: 53px;
   position: relative;
+  cursor: pointer;
+  top: 5px;
 }
 .props-stroke > input {
-  width: 35px;
-  vertical-align: text-top;
+  width: 60px;
   font-size: 16px;
+  position: relative;
+  top: 2px;
 }
 
 .props-fill > input {
   margin: 0;
   width: 19px;
   height: 19px;
-  vertical-align: text-bottom;
+  position: relative;
+  top: 2px;
 }

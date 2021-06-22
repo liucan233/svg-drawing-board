@@ -1,15 +1,13 @@
-function createCircle(e, figures) {
-  const { nativeEvent, type } = e;
-  const circle = figures.pop();
-  const { downX, downY } = circle;
-  circle.cx = (downX + nativeEvent.offsetX) / 2;
-  circle.cy = (downY + nativeEvent.offsetY) / 2;
-  circle.r =
+function createCircle(e, figure) {
+  const { nativeEvent } = e;
+  const { downX, downY } = figure;
+  figure.cx = (downX + nativeEvent.offsetX) / 2;
+  figure.cy = (downY + nativeEvent.offsetY) / 2;
+  figure.r =
     Math.max(
       Math.abs(nativeEvent.offsetX - downX),
       Math.abs(nativeEvent.offsetY - downY)
     ) / 2;
-  figures.push(circle);
 }
 
 function renderCircle(figure) {

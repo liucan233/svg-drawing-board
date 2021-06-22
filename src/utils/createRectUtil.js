@@ -1,9 +1,7 @@
-function createRect(e, figures) {
-  const { nativeEvent, type } = e;
-  const rect = figures.pop();
-  rect.moveX = nativeEvent.offsetX;
-  rect.moveY = nativeEvent.offsetY;
-  figures.push(rect);
+function createRect(e, figure) {
+  const { nativeEvent } = e;
+  figure.moveX = nativeEvent.offsetX;
+  figure.moveY = nativeEvent.offsetY;
 }
 
 function renderRect(figure) {
@@ -20,7 +18,6 @@ function renderRect(figure) {
     downY += rectHeight;
     rectHeight = -rectHeight;
   }
-  // console.log(rectWidth)
   return (
     <rect
       x={downX}

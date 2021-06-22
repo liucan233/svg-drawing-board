@@ -1,19 +1,18 @@
 import "./index.css";
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function ColorSelector({ svgStyle, setProps }) {
-  let [colors, setColors] = useState([
-    "#ff776d",
-    "#020826",
-    "#8c7851",
-    "#008eff",
-    "orange",
-  ]);
+const colors = ["#ff776d", "#020826", "#8c7851", "#008eff", "orange"];
+
+function ColorSelector() {
+  const newAction = useDispatch();
+  const { drawingStyle } = useSelector((state) => state);
+
   function handleClick({ target }) {
     const { dataset } = target;
     if (!dataset.color) return;
-    if (svgStyle.fill !== "transparent") svgStyle.fill = dataset.color;
-    setProps({ ...svgStyle, color: dataset.color });
+    drawingStyle.color = dataset.color;
+    newAction({ type: "SET_DRAWING_STYLE", style: drawingStyle });
   }
   return (
     <div className="color-selector" onClick={handleClick}>

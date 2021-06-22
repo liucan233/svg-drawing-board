@@ -1,19 +1,31 @@
 import "./index.css";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function FigureSelector({ svgStyle, setProps }) {
+function FigureSelector() {
+  const newAction = useDispatch();
+  const { drawingStyle } = useSelector((state) => state);
   const [active, setActive] = useState("path");
+
   function handleClick({ target }) {
-    if (target.tagName === "path") target = target.parentElement;
     const { dataset } = target;
+    if (dataset.type === active) return;
     setActive(dataset.type);
-    setProps({ ...svgStyle, type: dataset.type });
+    console.log(dataset.type);
+    newAction({
+      type: "SET_DRAWING_STYLE",
+      style: { ...drawingStyle, type: dataset.type },
+    });
   }
   return (
-    <div className="figure-selector" onClick={handleClick}>
+    <div
+      className="figure-selector"
+      onClick={handleClick}
+      style={{ "--fillColor": drawingStyle.color }}
+    >
       <svg
         viewBox="0 0 1280 1024"
-        fill={svgStyle.color}
+        // fill={drawingStyle.color}
         xmlns="http://www.w3.org/2000/svg"
         data-type="path"
         className={active === "path" ? "item-active" : ""}
@@ -23,7 +35,7 @@ function FigureSelector({ svgStyle, setProps }) {
       <svg
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
-        fill={svgStyle.color}
+        // fill={drawingStyle.color}
         data-type="triangle"
         className={active === "triangle" ? "item-active" : ""}
       >
@@ -31,7 +43,6 @@ function FigureSelector({ svgStyle, setProps }) {
       </svg>
       <svg
         viewBox="0 0 1024 1024"
-        fill={svgStyle.color}
         xmlns="http://www.w3.org/2000/svg"
         data-type="circle"
         className={active === "circle" ? "item-active" : ""}
@@ -40,7 +51,6 @@ function FigureSelector({ svgStyle, setProps }) {
       </svg>
       <svg
         viewBox="0 0 1024 1024"
-        fill={svgStyle.color}
         xmlns="http://www.w3.org/2000/svg"
         data-type="rect"
         className={active === "rect" ? "item-active" : ""}
@@ -49,7 +59,6 @@ function FigureSelector({ svgStyle, setProps }) {
       </svg>
       <svg
         viewBox="0 0 1024 1024"
-        fill={svgStyle.color}
         xmlns="http://www.w3.org/2000/svg"
         data-type="line"
         className={active === "line" ? "item-active" : ""}
@@ -59,7 +68,6 @@ function FigureSelector({ svgStyle, setProps }) {
       <svg
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
-        fill={svgStyle.color}
         data-type="arc"
         className={active === "arc" ? "item-active" : ""}
       >

@@ -1,87 +1,96 @@
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
 import React, { Fragment, useState } from "react";
-import ToolBar from "../controlsBar";
-import { createLine, renderLine } from "../../utils/createLineUtil";
-import { createPath, renderPath } from "../../utils/createPathUtil";
-import { createRect, renderRect } from "../../utils/createRectUtil";
-import { createCircle, renderCircle } from "../../utils/createCircleUtil";
-import { createTriangle, renderTriangle } from "../../utils/createTriangleUtil";
-import { createBessel, renderBessel } from "../../utils/createBesselUtil";
+import { createLine } from "../../utils/createLineUtil";
+import { createPath } from "../../utils/createPathUtil";
+import { createRect } from "../../utils/createRectUtil";
+import { createCircle } from "../../utils/createCircleUtil";
+import { createTriangle } from "../../utils/createTriangleUtil";
+import { createBessel } from "../../utils/createBesselUtil";
+import createSvgChildUtil from "../../utils/createSvgChildUtil";
+
+let onTouch = false;
+let onPainting = false;
 
 function DrawingBox() {
-  const [figures, setFigures] = useState([]);
-  const [onPainting, changePainting] = useState(false);
-  const [drawingProps, setDrawingProps] = useState({
-    type: "path",
-    color: "orange",
-    width: 5,
-    fill: "transparent",
-  });
+  const newAction = useDispatch();
+  const [figure, setFigure] = useState({});
+  const { drawingStyle } = useSelector((state) => state);
+  const { figures } = useSelector((state) => state);
 
   function handleMouseDown(e) {
-    changePainting(true);
+    onPainting = true;
     const { nativeEvent } = e;
-    const { color, width, fill } = drawingProps;
-    figures.push({
-      type: drawingProps.type,
-      key: Date.now(),
-      color,
-      width,
-      fill,
-      downX: nativeEvent.offsetX,
-      downY: nativeEvent.offsetY,
-      path: `M${nativeEvent.offsetX} ${nativeEvent.offsetY}`,
-    });
+    const { color, width, fill } = drawingStyle;
+    figure.color = color;
+    figure.width = width;
+    figure.fill = fill;
+    figure.path = "";
+    figure.type = drawingStyle.type;
+    figure.key = Date.now();
+    figure.downX = nativeEvent.offsetX;
+    figure.downY = nativeEvent.offsetY;
   }
 
   function handleMouseMove(e) {
+    if (!onPainting) return;
+    figure.flag = true;
     let handleDrawing = function () {};
-    const { type } = drawingProps;
+    const { type } = drawingStyle;
     if (type === "path") handleDrawing = createPath;
     else if (type === "line") handleDrawing = createLine;
     else if (type === "rect") handleDrawing = createRect;
     else if (type === "circle") handleDrawing = createCircle;
     else if (type === "triangle") handleDrawing = createTriangle;
     else if (type === "arc") handleDrawing = createBessel;
-    handleDrawing(e, figures);
-    setFigures([...figures]);
+    handleDrawing(e, figure);
+    setFigure({ ...figure });
   }
 
   function handleMoseUp() {
-    changePainting(false);
+    if (onTouch) return;
+    onPainting = false;
+    if (!figure || !figure.flag) return;
+    setFigure({ type: "empty" });
+    newAction({ type: "ADD_NEW_FIGURE", figure });
   }
 
-  function createSvgChild(item) {
-    const { type } = item;
-    let getPath = function () {};
-    if (type === "path") getPath = renderPath;
-    else if (type === "line") getPath = renderLine;
-    else if (type === "rect") getPath = renderRect;
-    else if (type === "circle") getPath = renderCircle;
-    else if (type === "triangle") getPath = renderTriangle;
-    else if (type === "arc") getPath = renderBessel;
-    return getPath(item);
+  function touchToMouse(e) {
+    const {
+      touches: [{ clientX, clientY }],
+    } = e;
+    return { nativeEvent: { offsetX: clientX, offsetY: clientY } };
+  }
+
+  function handleTouchEnd(e) {
+    e.preventDefault();
+    onTouch = false;
+    handleMoseUp();
+  }
+
+  function handleTouchMove(e) {
+    if (onTouch) {
+      handleMouseMove(touchToMouse(e));
+    } else {
+      onTouch = true;
+      handleMouseDown(touchToMouse(e));
+    }
   }
 
   return (
     <Fragment>
       <div className="drawing-box">
         <svg
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
           onMouseUp={handleMoseUp}
-          onMouseLeave={handleMoseUp}
           onMouseDown={handleMouseDown}
-          onMouseMove={onPainting ? handleMouseMove : null}
+          onMouseMove={handleMouseMove}
         >
-          {figures.map((item, index) => {
-            return createSvgChild(item, index);
-          })}
+          {createSvgChildUtil(figure)}
+          {figures.map((item) => createSvgChildUtil(item))}
         </svg>
       </div>
-      <ToolBar
-        svgStyle={drawingProps}
-        setProps={setDrawingProps}
-        figures={figures}
-      />
     </Fragment>
   );
 }

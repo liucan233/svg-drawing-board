@@ -1,12 +1,11 @@
-function createBessel(e, figures) {
+function createBessel(e, figure) {
   const { nativeEvent } = e;
-  const bessel = figures.pop();
-  bessel.way = `${bessel.path} Q ${nativeEvent.offsetX} ${bessel.downY} ${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
-  figures.push(bessel);
+  figure.path = ` Q ${nativeEvent.offsetX} ${figure.downY} ${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
 }
 
 function renderBessel(figure) {
-  const { way, key, color, width, fill } = figure;
+  const { key, color, width, downX, downY, path } = figure;
+  const newPath = `M${downX} ${downY} ` + path;
   return (
     <path
       stroke={color}
@@ -14,7 +13,7 @@ function renderBessel(figure) {
       fill="transparent"
       strokeLinecap="round"
       strokeLinejoin="round"
-      d={way}
+      d={newPath}
       key={key}
     />
   );

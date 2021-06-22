@@ -1,14 +1,27 @@
 .figure-selector {
-  flex-shrink: 0;
+  --fillColor: orange;
+  height: 42px;
+  overflow: hidden;
+  position: relative;
+  top: 12px;
 }
 
 .figure-selector > svg {
+  fill: var(--fillColor);
   width: 35px;
   height: 35px;
-  margin: 10px;
+  margin: 0 10px;
   box-sizing: border-box;
   vertical-align: top;
   cursor: pointer;
   border-bottom-width: 0;
   transition: border-bottom-width ease-in-out 0.1s;
+}
+
+.figure-selector > svg > path {
+  pointer-events: none;
+}
+
+.item-active {
+  border-bottom: #e82a2a solid 2px !important;
 }

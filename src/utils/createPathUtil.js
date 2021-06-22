@@ -1,12 +1,12 @@
 function createPath(e, figures) {
   const { nativeEvent } = e;
-  const topSvgChild = figures.pop();
-  topSvgChild.path += `L${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
-  figures.push(topSvgChild);
+  figures.path += `L${nativeEvent.offsetX} ${nativeEvent.offsetY}`;
 }
 
 function renderPath(figure) {
-  const { path, key, color, width, fill } = figure;
+  const { path, key, color, width, downX, downY } = figure;
+  if (!path) return null;
+  const newPath = `M${downX} ${downY} ` + path;
   return (
     <path
       stroke={color}
@@ -14,7 +14,7 @@ function renderPath(figure) {
       fill="transparent"
       strokeLinecap="round"
       strokeLinejoin="round"
-      d={path}
+      d={newPath}
       key={key}
     />
   );

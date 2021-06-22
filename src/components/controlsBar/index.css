@@ -1,6 +1,5 @@
-.tool-bar {
+.tool-bar-wrap {
   margin: 0 auto;
-  padding: 2px 10px;
   position: absolute;
   bottom: 25px;
   left: 50%;
@@ -11,61 +10,31 @@
   border-radius: 10px;
   box-shadow: 0 0 1px 0 #e2e2e2;
   transform: translateX(-50%);
-  overflow: auto hidden;
-  display: flex;
-  justify-content: flex-start;
+  overflow: auto;
   box-sizing: border-box;
 }
-
-.tool-bar::-webkit-scrollbar {
-  height: 7px;
-}
-.tool-bar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #adb5bd;
-  border-top: 2px solid transparent;
-}
-.tool-bar::-webkit-scrollbar-track {
-  width: 10px;
-  border-radius: 10px;
-  background: none;
-}
-
-@media screen and (max-width: 700px) {
-  .tool-bar {
-    width: 90%;
-    bottom: 10px;
-  }
+.tool-bar {
+  touch-action: none;
+  width: 1300px;
+  display: flow-root;
+  white-space: nowrap;
 }
 .tool-bar > div {
   margin: 0 10px;
+  float: left;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.tool-color {
-  background-color: #e7ebee;
+.tool-bar-wrap::-webkit-scrollbar {
+  height: 5px;
 }
-
-.item-active {
-  border-bottom: #e82a2a solid 2px !important;
-  /*transition: border-bottom-width ease-in 0.1s;*/
+.tool-bar-wrap::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #adb5bd;
+  border-top: 2px solid transparent;
 }
-.tool-space {
-  flex-shrink: 0;
-  margin-top: 6px;
-  width: 3px;
-  height: 80%;
-  border-radius: 2px;
-  background-color: #f39c92;
-}
-
-.more-setting {
-  flex-shrink: 0;
-  cursor: pointer;
-  color: #f25042;
-  line-height: 53px;
-}
-
-.more-setting:hover {
-  color: #e0857b;
-  transition: color ease-in 0.2s;
+.tool-bar-wrap::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 8px;
+  background: none;
 }

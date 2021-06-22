@@ -1,9 +1,7 @@
-function createTriangle(e, figures) {
-  const { nativeEvent, type } = e;
-  const triangle = figures.pop();
-  triangle.moveX = nativeEvent.offsetX;
-  triangle.moveY = nativeEvent.offsetY;
-  figures.push(triangle);
+function createTriangle(e, figure) {
+  const { nativeEvent } = e;
+  figure.moveX = nativeEvent.offsetX;
+  figure.moveY = nativeEvent.offsetY;
 }
 
 function renderTriangle(figure) {

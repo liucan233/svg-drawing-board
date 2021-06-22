@@ -1,24 +1,39 @@
 import "./index.css";
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function PropsSelector({ svgStyle, setProps }) {
-  const [width, setWidth] = useState("5");
+function PropsSelector() {
+  const newAction = useDispatch();
+  const { drawingStyle, figures } = useSelector((state) => state);
 
   function handleOnchange({ target }) {
-    setWidth(target.value);
-  }
-
-  function handleBlur({ target }) {
-    if (!target.value) setWidth(svgStyle.width);
-    else {
-      const newWidth = Number(target.value);
-      setProps({ ...svgStyle, width: newWidth });
-    }
+    drawingStyle.width = Number(target.value);
+    newAction({ type: "SET_DRAWING_STYLE", style: drawingStyle });
   }
 
   function handleFill({ target }) {
-    if (target.checked) setProps({ ...svgStyle, fill: svgStyle.color });
-    else setProps({ ...svgStyle, fill: "transparent" });
+    drawingStyle.fill = target.checked ? drawingStyle.color : "transparent";
+    newAction({ type: "SET_DRAWING_STYLE", style: drawingStyle });
+  }
+
+  function handleSave() {
+    const figuresStr = JSON.stringify(figures);
+    localStorage.setItem("figures", figuresStr);
+    console.log(figuresStr);
+  }
+
+  function handleClear() {
+    newAction({ type: "CLEAR_SVG" });
+  }
+
+  function handleCancel() {
+    console.log("撤销");
+    newAction({ type: "CANCEL_ADD" });
+  }
+
+  function handleBack() {
+    console.log("恢复");
+    newAction({ type: "BACK_TO" });
   }
 
   return (
@@ -28,11 +43,10 @@ function PropsSelector({ svgStyle, setProps }) {
           <span>线宽：</span>
         </label>
         <input
-          value={width}
+          value={drawingStyle.width}
           id="stroke-width"
-          onBlur={handleBlur}
           onChange={handleOnchange}
-          type="number"
+          type="range"
           max={20}
           min={1}
         />
@@ -43,6 +57,19 @@ function PropsSelector({ svgStyle, setProps }) {
           <span>封闭：</span>
         </label>
         <input id="fill" type="checkbox" onChange={handleFill} />
+      </span>
+
+      <span className="props-cancel" onClick={handleCancel}>
+        撤销
+      </span>
+      <span className="props-back" onClick={handleBack}>
+        恢复
+      </span>
+      <span className="props-clear" onClick={handleClear}>
+        清空画布
+      </span>
+      <span className="props-save" onClick={handleSave}>
+        保存作品
       </span>
     </div>
   );
