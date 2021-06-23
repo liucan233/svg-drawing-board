@@ -1,0 +1,16 @@
+.export-work > span {
+  float: right;
+  font-size: 18px;
+}
+.export-work > span:nth-child(1) {
+  float: left;
+  color: #716040;
+}
+.export-form {
+  color: #f25042;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.export-form:hover {
+  color: #ff7467;
+}

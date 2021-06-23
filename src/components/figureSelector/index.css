@@ -1,9 +1,7 @@
 .figure-selector {
   --fillColor: orange;
-  height: 42px;
+  height: 100%;
   overflow: hidden;
-  position: relative;
-  top: 12px;
 }
 
 .figure-selector > svg {

@@ -12,6 +12,7 @@ function ColorSelector() {
     const { dataset } = target;
     if (!dataset.color) return;
     drawingStyle.color = dataset.color;
+    if (drawingStyle.fill !== "transparent") drawingStyle.fill = dataset.color;
     newAction({ type: "SET_DRAWING_STYLE", style: drawingStyle });
   }
   return (
@@ -19,6 +20,7 @@ function ColorSelector() {
       {colors.map((item, index) => {
         return (
           <span
+            className="tool-bar-item"
             style={{ backgroundColor: item }}
             data-color={item}
             key={index}

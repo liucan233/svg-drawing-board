@@ -1,0 +1,26 @@
+.tool-operate {
+  height: 100%;
+}
+.tool-operate > svg > path {
+  pointer-events: none;
+}
+.tool-operate > svg[data-active="true"] {
+  fill: #bb9e5a;
+}
+.tool-operate > svg[data-active="false"] {
+  fill: #eee;
+}
+.tool-operate > svg[data-active="true"]:active {
+  fill: #d4b15f;
+  transition: fill ease-in-out 0.1s;
+}
+
+.tool-clear {
+  color: #f25042;
+  margin-left: 15px;
+}
+
+.tool-clear:active {
+  color: #ff786b;
+  transition: color ease-in-out 0.1s;
+}

@@ -3,6 +3,8 @@ import React from "react";
 import ColorSelector from "../colorSelector";
 import FigureSelector from "../figureSelector";
 import PropsSelector from "../propsSelector";
+import FiguresOperate from "../figuresOperate";
+import SaveWork from "../saveWork";
 
 function ToolBar() {
   return (
@@ -11,6 +13,8 @@ function ToolBar() {
         <ColorSelector />
         <FigureSelector />
         <PropsSelector />
+        <FiguresOperate />
+        <SaveWork />
       </div>
     </div>
   );

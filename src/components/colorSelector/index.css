@@ -1,14 +1,11 @@
 .color-selector {
-  height: 42px;
+  height: 100%;
   overflow: hidden;
-  position: relative;
-  top: 12px;
 }
 .color-selector > span {
-  margin: 0 10px;
   display: inline-block;
+  margin: 0 10px;
   width: 35px;
   height: 35px;
   border-radius: 5px;
-  cursor: pointer;
 }

@@ -1,15 +1,15 @@
-.more-tool {
-  --width: 320px;
-  padding: 0 20px;
-  position: fixed;
-  left: calc((100% - var(--width)) / 2);
-  width: var(--width);
-  height: 220px;
-  background-color: #f9f4ef;
-  border-radius: 10px;
-  box-sizing: border-box;
-  box-shadow: 0 0 20px 0 #c6c6c6;
-}
+/*.more-tool {*/
+/*  --width: 320px;*/
+/*  padding: 0 20px;*/
+/*  position: fixed;*/
+/*  left: calc((100% - var(--width)) / 2);*/
+/*  width: var(--width);*/
+/*  height: 220px;*/
+/*  background-color: #f9f4ef;*/
+/*  border-radius: 10px;*/
+/*  box-sizing: border-box;*/
+/*  box-shadow: 0 0 20px 0 #c6c6c6;*/
+/*}*/
 
 @keyframes show {
   from {

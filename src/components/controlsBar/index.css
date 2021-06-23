@@ -14,7 +14,8 @@
   box-sizing: border-box;
 }
 .tool-bar {
-  touch-action: none;
+  height: 100%;
+  touch-action: pan-x;
   width: 1300px;
   display: flow-root;
   white-space: nowrap;
@@ -37,4 +38,14 @@
   width: 8px;
   border-radius: 8px;
   background: none;
+}
+
+.tool-bar-item {
+  margin: 0 10px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  vertical-align: top;
 }

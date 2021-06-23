@@ -86,6 +86,7 @@ function DrawingBox() {
           onMouseUp={handleMoseUp}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
+          onMouseLeave={handleMoseUp}
         >
           {createSvgChildUtil(figure)}
           {figures.map((item) => createSvgChildUtil(item))}

@@ -1,28 +1,34 @@
 .props-selector {
-  height: 30px;
-  overflow: hidden;
+  height: 100%;
   font-size: 17px;
   color: #020826;
-  position: relative;
-  top: 12px;
-}
-.props-selector > span {
-  margin: 0 10px;
-  position: relative;
-  cursor: pointer;
-  top: 5px;
-}
-.props-stroke > input {
-  width: 60px;
-  font-size: 16px;
-  position: relative;
-  top: 2px;
 }
 
-.props-fill > input {
-  margin: 0;
-  width: 19px;
-  height: 19px;
-  position: relative;
-  top: 2px;
+.props-selector > span > input {
+  vertical-align: text-bottom;
+  display: inline-block;
+  font-size: 18px;
+}
+#range {
+  width: 120px;
+  -webkit-appearance: none;
+}
+#range::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  border-radius: 5px;
+  background-color: #eee;
+}
+#range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid #1ba1e2;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background-color: #fffffe;
+  cursor: pointer;
+}
+#checkbox {
+  margin: 1px 0;
+  width: 17px;
+  height: 17px;
 }
