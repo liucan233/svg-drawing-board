@@ -78,21 +78,19 @@ function DrawingBox() {
   }
 
   return (
-    <Fragment>
-      <div className="drawing-box">
-        <svg
-          onTouchEnd={handleTouchEnd}
-          onTouchMove={handleTouchMove}
-          onMouseUp={handleMoseUp}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMoseUp}
-        >
-          {createSvgChildUtil(figure)}
-          {figures.map((item) => createSvgChildUtil(item))}
-        </svg>
-      </div>
-    </Fragment>
+    <svg
+      className="drawing-box"
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
+      onMouseUp={handleMoseUp}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMoseUp}
+      style={{ backgroundColor: "#f9f4ef" }}
+    >
+      {figures.map((item) => createSvgChildUtil(item))}
+      {createSvgChildUtil(figure)}
+    </svg>
   );
 }
 export default DrawingBox;

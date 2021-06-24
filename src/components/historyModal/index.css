@@ -20,6 +20,7 @@
   padding: 8px 35px;
   margin: 0 auto;
   width: 400px;
+  max-width: 90%;
   height: 500px;
   position: relative;
   background-color: #f9f4ef;
@@ -30,12 +31,16 @@
   top: 30px;
   opacity: 0.5;
   color: #020826;
-  text-align: center;
 }
 .modal[data-active="true"] {
   top: 70px;
   opacity: 1;
 }
 .modal > h1 {
+  text-align: center;
   font-size: 22px;
+}
+.modal > h3 {
+  margin-top: 30px;
+  font-size: 18px;
 }

@@ -1,16 +1,38 @@
-.export-work > span {
-  float: right;
-  font-size: 18px;
+.export-item {
+  display: flow-root;
 }
-.export-work > span:nth-child(1) {
+
+.name-input {
+  color: #716040;
+  width: 70%;
+  padding: 0 8px;
+  outline: none;
+  height: 25px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: #eeeeee solid 1px;
+  vertical-align: text-bottom;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #c6c6c6;
+}
+.name-input:focus {
+  outline: none;
+  border-color: #2177d5;
+  /*border: #0366d6 solid 1px;*/
+  box-shadow: 0 0 2px 1px #227bdb;
+}
+
+.export-item-name {
   float: left;
   color: #716040;
 }
-.export-form {
+.export-btn {
+  float: right;
+  font-size: 18px;
   color: #f25042;
   cursor: pointer;
   margin-left: 10px;
 }
-.export-form:hover {
+.export-btn:hover {
   color: #ff7467;
 }
