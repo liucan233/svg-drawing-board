@@ -58,6 +58,7 @@ function handleAction(state = defaultState, action) {
     state.project.name = name;
     state.project.id = id;
     Figures.clearAllStack();
+    Figures.addStatus(state.figures);
     return { ...state };
   }
   return state;

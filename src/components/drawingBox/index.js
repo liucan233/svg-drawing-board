@@ -11,6 +11,7 @@ import createSvgChildUtil from "../../utils/createSvgChildUtil";
 
 let onTouch = false;
 let onPainting = false;
+let updated = false;
 
 function DrawingBox() {
   const newAction = useDispatch();
@@ -32,6 +33,11 @@ function DrawingBox() {
     figure.downY = nativeEvent.offsetY;
   }
 
+  function updateComponent() {
+    updated = false;
+    setFigure({ ...figure });
+  }
+
   function handleMouseMove(e) {
     if (!onPainting) return;
     figure.flag = true;
@@ -44,7 +50,10 @@ function DrawingBox() {
     else if (type === "triangle") handleDrawing = createTriangle;
     else if (type === "arc") handleDrawing = createBessel;
     handleDrawing(e, figure);
-    setFigure({ ...figure });
+    if (!updated) {
+      updated = true;
+      requestAnimationFrame(updateComponent);
+    }
   }
 
   function handleMoseUp() {
