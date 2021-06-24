@@ -42,14 +42,5 @@ jobs:
         SOURCE: "build/"
         # Target directory
         TARGET: "/home/liucan/webstorm/svg-drawing-board/"
-        
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@4.1
-      with:
-        switches: -avzr --delete
-        path: build/
-        remote_path: /home/liucan/webstorm/svg-drawing-board/
-        remote_host: ${{ secrets.SSH_HOST }}
-        remote_user: ${{ secrets.SSH_USERNAME }}
-        remote_key: ${{ secrets.DEPLOY_KEY }}
+
   
