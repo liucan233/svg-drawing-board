@@ -20,7 +20,6 @@ const defaultState = {
 function handleAction(state = defaultState, action) {
   const { type } = action;
   if (type === "ADD_NEW_FIGURE") {
-    console.log(action);
     state.figures.push(action.figure);
     Figures.addStatus(state.figures);
     return { ...state };
@@ -31,9 +30,9 @@ function handleAction(state = defaultState, action) {
     state.drawingStyle = action.style;
     return { ...state };
   } else if (type === "CLEAR_FIGURES") {
+    Figures.addStatus([]);
     Figures.clearFlag = true;
     state.figures = [];
-    console.log(state.figures);
     return { ...state };
   } else if (type === "BACK_TO") {
     const lastStatus = Figures.backStatus();

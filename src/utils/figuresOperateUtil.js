@@ -5,6 +5,7 @@ function FiguresBak() {
 }
 
 FiguresBak.prototype.addStatus = function (figures) {
+  this.clearFlag = false;
   this.recoveryStack = [];
   this.cancelStack.push([...figures]);
 };

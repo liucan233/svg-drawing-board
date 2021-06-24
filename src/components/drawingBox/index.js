@@ -12,6 +12,7 @@ import createSvgChildUtil from "../../utils/createSvgChildUtil";
 let onTouch = false;
 let onPainting = false;
 let updated = false;
+let requested = false;
 
 function DrawingBox() {
   const newAction = useDispatch();
@@ -34,6 +35,7 @@ function DrawingBox() {
   }
 
   function updateComponent() {
+    requested = true;
     setFigure({ ...figure });
   }
 
@@ -53,7 +55,6 @@ function DrawingBox() {
       updated = true;
       requestAnimationFrame(updateComponent);
     }
-    // setFigure({ ...figure });
   }
 
   function handleMoseUp() {
@@ -61,6 +62,7 @@ function DrawingBox() {
     onPainting = false;
     if (!figure?.flag) return;
     const lastFigure = { ...figure };
+    figure.type = "";
     newAction({ type: "ADD_NEW_FIGURE", figure: lastFigure });
   }
 
@@ -86,18 +88,15 @@ function DrawingBox() {
     }
   }
 
-  useEffect(
-    function () {
-      updated = false;
-    },
-    [figure]
-  );
+  function handleMouseLeave() {
+    onPainting = false;
+  }
 
   useEffect(
     function () {
-      setFigure({ type: "empty" });
+      if (requested) updated = false;
     },
-    [figures]
+    [figure]
   );
 
   return (
@@ -108,7 +107,7 @@ function DrawingBox() {
       onMouseUp={handleMoseUp}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMoseUp}
+      onMouseLeave={handleMouseMove}
       style={{ backgroundColor: "#f9f4ef" }}
     >
       {figures.map((item) => createSvgChildUtil(item))}
