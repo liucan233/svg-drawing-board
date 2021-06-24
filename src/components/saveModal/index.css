@@ -36,3 +36,14 @@
 .export-btn:hover {
   color: #ff7467;
 }
+.save-tips {
+  height: 18px;
+  color: #fc5a5a;
+  text-align: center;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.save-tips[data-active="true"] {
+  transform: scaleY(1);
+  transition: transform ease-in-out 0.2s;
+}

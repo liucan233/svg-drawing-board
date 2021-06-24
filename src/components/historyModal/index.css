@@ -31,6 +31,11 @@
   top: 30px;
   opacity: 0.5;
   color: #020826;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+.modal::-webkit-scrollbar {
+  display: none;
 }
 .modal[data-active="true"] {
   top: 70px;
@@ -43,4 +48,85 @@
 .modal > h3 {
   margin-top: 30px;
   font-size: 18px;
+}
+.history-project-wrap {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 157px;
+  overflow: hidden;
+}
+.history-project {
+  margin: 15px auto;
+  padding: 15px;
+  width: 100%;
+  background-color: #fffffe;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 1px #eeeeee;
+  box-sizing: border-box;
+  display: flow-root;
+}
+.history-project > div {
+  float: left;
+}
+
+.project-preview {
+  width: 50%;
+  color: #020826;
+}
+.project-preview > img {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: #8c7851 solid 1px;
+  object-position: center;
+  vertical-align: bottom;
+  box-sizing: border-box;
+}
+
+.project-details {
+  width: 49%;
+  height: 100%;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+
+.project-details > h3 {
+  margin: 5px 0;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.project-details > h4 {
+  color: #716040;
+  margin: 10px 0;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.project-btn {
+  position: relative;
+  bottom: 0;
+}
+.project-btn > span {
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+  padding: 3px 5px;
+  color: #fffffe;
+  border-radius: 3px;
+  margin: 5px 10px;
+  background-color: #8c7851;
+}
+
+.project-delete {
+  background-color: #d7bc83;
+  opacity: 0.85;
+}
+.history-project-wrap[data-remove="true"] {
+  height: 0;
+  transition: all ease-in-out 0.4s;
 }

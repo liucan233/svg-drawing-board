@@ -26,6 +26,12 @@ FiguresBak.prototype.recStatus = function () {
   return tmp;
 };
 
+FiguresBak.prototype.clearAllStack = function () {
+  this.clearFlag = false;
+  this.cancelStack = [];
+  this.recoveryStack = [];
+};
+
 const Figures = new FiguresBak();
 
 export default Figures;
