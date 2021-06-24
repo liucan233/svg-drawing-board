@@ -15,6 +15,7 @@ function createSvgChildUtil(item) {
   else if (type === "circle") getPath = renderCircle;
   else if (type === "triangle") getPath = renderTriangle;
   else if (type === "arc") getPath = renderBessel;
+  else return null;
   return getPath(item);
 }
 

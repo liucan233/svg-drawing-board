@@ -1,6 +1,6 @@
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { createLine } from "../../utils/createLineUtil";
 import { createPath } from "../../utils/createPathUtil";
 import { createRect } from "../../utils/createRectUtil";
@@ -34,7 +34,6 @@ function DrawingBox() {
   }
 
   function updateComponent() {
-    updated = false;
     setFigure({ ...figure });
   }
 
@@ -54,14 +53,15 @@ function DrawingBox() {
       updated = true;
       requestAnimationFrame(updateComponent);
     }
+    // setFigure({ ...figure });
   }
 
   function handleMoseUp() {
     if (onTouch) return;
     onPainting = false;
-    if (!figure || !figure.flag) return;
-    setFigure({ type: "empty" });
-    newAction({ type: "ADD_NEW_FIGURE", figure });
+    if (!figure?.flag) return;
+    const lastFigure = { ...figure };
+    newAction({ type: "ADD_NEW_FIGURE", figure: lastFigure });
   }
 
   function touchToMouse(e) {
@@ -85,6 +85,20 @@ function DrawingBox() {
       handleMouseDown(touchToMouse(e));
     }
   }
+
+  useEffect(
+    function () {
+      updated = false;
+    },
+    [figure]
+  );
+
+  useEffect(
+    function () {
+      setFigure({ type: "empty" });
+    },
+    [figures]
+  );
 
   return (
     <svg
