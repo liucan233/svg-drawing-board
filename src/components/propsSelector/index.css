@@ -2,6 +2,7 @@
   height: 100%;
   font-size: 17px;
   color: #020826;
+  display: flow-root;
 }
 
 .props-selector > span > input {
@@ -28,7 +29,52 @@
   cursor: pointer;
 }
 #checkbox {
-  margin: 1px 0;
-  width: 17px;
-  height: 17px;
+  /*margin: 1px 0;*/
+  /*width: 17px;*/
+  /*height: 17px;*/
+  display: none;
+}
+
+.input-emoji {
+  padding: 0 5px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+  position: relative;
+  background-color: #cce4f5;
+  vertical-align: bottom;
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: background-color ease-in-out 0.15s;
+}
+.input-tips {
+  line-height: 12px;
+  width: 50%;
+  color: #020826;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-tips:nth-child(2) {
+  right: 0;
+  color: #fffffe;
+}
+.input-emoji::after {
+  content: "😛";
+  margin-top: -1px;
+  display: inline-block;
+  font-size: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left ease-in-out 0.15s;
+}
+.input-fill > #checkbox:checked + .input-emoji {
+  background-color: #bfd5e7;
+}
+.input-fill > #checkbox:checked + .input-emoji::after {
+  content: "😄";
+  left: 17px;
 }

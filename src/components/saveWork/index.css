@@ -1,3 +1,7 @@
 .save-work {
   height: 100%;
+  font-size: 17px;
+}
+.save-work > span {
+  vertical-align: top;
 }

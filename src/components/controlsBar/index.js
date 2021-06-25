@@ -1,5 +1,5 @@
 import "./index.css";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import ColorSelector from "../colorSelector";
 import FigureSelector from "../figureSelector";
 import PropsSelector from "../propsSelector";
@@ -8,6 +8,7 @@ import SaveWork from "../saveWork";
 
 function ToolBar() {
   const wrapRef = useRef();
+
   function handleWheel(e) {
     const { current } = wrapRef;
     e.stopPropagation();

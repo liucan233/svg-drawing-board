@@ -1,5 +1,10 @@
 .tool-operate {
   height: 100%;
+  display: flow-root;
+}
+.tool-operate > svg,
+.tool-operate > span {
+  float: left;
 }
 .tool-operate > svg > path {
   pointer-events: none;

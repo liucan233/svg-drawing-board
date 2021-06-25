@@ -30,11 +30,14 @@ function PropsSelector() {
         />
       </span>
 
-      <span className="tool-bar-item">
-        <label htmlFor="fill">
-          <span>填充：</span>
-        </label>
+      <span className="tool-bar-item input-fill">
+        <span>填充：</span>
         <input id="checkbox" type="checkbox" onChange={handleFill} />
+        <label htmlFor="checkbox" className="input-emoji">
+          <span className="input-tips">no </span>
+          <span className="input-tips"> off</span>
+          {/*<span className='emoji'>😄</span>*/}
+        </label>
       </span>
     </div>
   );

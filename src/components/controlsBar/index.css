@@ -16,7 +16,7 @@
 .tool-bar {
   height: 100%;
   touch-action: pan-x;
-  width: 1300px;
+  width: 1330px;
   display: flow-root;
   white-space: nowrap;
 }
@@ -47,5 +47,5 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  vertical-align: top;
+  /*vertical-align: bottom;*/
 }
