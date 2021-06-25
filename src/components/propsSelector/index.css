@@ -63,12 +63,12 @@
 }
 .input-emoji::after {
   content: "😛";
-  margin-top: -1px;
   display: inline-block;
   font-size: 15px;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   transition: left ease-in-out 0.15s;
 }
 .input-fill > #checkbox:checked + .input-emoji {
