@@ -92,12 +92,12 @@ function DrawingBox() {
     onPainting = false;
   }
 
-  useEffect(
-    function () {
-      if (requested) updated = false;
-    },
-    [figure]
-  );
+  useEffect(function () {
+      if (requested){
+        updated = false;
+        requested = false;
+      }
+  },[figure]);
 
   return (
     <svg
@@ -107,7 +107,7 @@ function DrawingBox() {
       onMouseUp={handleMoseUp}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{ backgroundColor: "#f9f4ef" }}
     >
       {figures.map((item) => createSvgChildUtil(item))}
