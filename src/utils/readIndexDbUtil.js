@@ -23,11 +23,19 @@ function handleError() {
   this.callback.onerror();
 }
 
+function handleUpgrade({ target: { result } }) {
+  console.info("尝试创建数据库");
+  if (!result.objectStoreNames.contains("lists")) {
+    result.createObjectStore("lists", { keyPath: "id" });
+  }
+}
+
 function readIndexDb(onsuccess, onerror) {
   const request = indexedDB.open("projects", 3);
   request.callback = { onsuccess, onerror };
   request.onsuccess = handleSuccess;
   request.onerror = handleError;
+  request.onupgradeneeded=handleUpgrade;
 }
 
 export default readIndexDb;
