@@ -28,9 +28,8 @@ FiguresBak.prototype.recStatus = function () {
 };
 
 FiguresBak.prototype.clearAllStack = function () {
-  this.clearFlag = false;
-  this.cancelStack = [[]];
-  this.recoveryStack = [];
+  if(this.clearFlag) return;
+  this.clearFlag = true;
 };
 
 const Figures = new FiguresBak();

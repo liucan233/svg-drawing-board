@@ -30,8 +30,7 @@ function handleAction(state = defaultState, action) {
     state.drawingStyle = action.style;
     return { ...state };
   } else if (type === "CLEAR_FIGURES") {
-    Figures.addStatus([]);
-    Figures.clearFlag = true;
+    Figures.clearAllStack();
     state.figures = [];
     return { ...state };
   } else if (type === "BACK_TO") {
