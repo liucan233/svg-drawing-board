@@ -13,10 +13,8 @@ function ToolBar() {
     const { current } = wrapRef;
     e.stopPropagation();
     current.scrollTo({
-      left: ~~(current.scrollLeft + e.deltaY * 0.5),
-      // behavior: 'smooth'
+      left: ~~(current.scrollLeft + e.deltaY * 0.5)
     });
-    // current.scrollLeft+=e.deltaY*0.5;
   }
   return (
     <div className="tool-bar-wrap" onWheel={handleWheel} ref={wrapRef}>

@@ -12,6 +12,7 @@
   transform: translateX(-50%);
   overflow: auto;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 .tool-bar {
   height: 100%;
