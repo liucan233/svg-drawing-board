@@ -19,19 +19,21 @@ function PropsSelector() {
   return (
     <div className="props-selector">
       <span className="tool-bar-item">
-        <span>粗细：</span>
-        <input
-          value={drawingStyle.width}
-          id="range"
-          onChange={handleOnchange}
-          type="range"
-          max={20}
-          min={1}
-        />
+        <span className='tool-bar-text'>
+          墨迹粗细：
+          <input
+            value={drawingStyle.width}
+            id="range"
+            onChange={handleOnchange}
+            type="range"
+            max={20}
+            min={1}
+          />
+        </span>
       </span>
 
       <span className="tool-bar-item input-fill">
-        <span>填充：</span>
+        <span className='tool-bar-text'>填充内部：</span>
         <input id="checkbox" type="checkbox" onChange={handleFill} />
         <label htmlFor="checkbox" className="input-emoji">
           <span className="input-tips">no </span>

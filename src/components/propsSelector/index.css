@@ -5,15 +5,10 @@
   display: flow-root;
 }
 
-.props-selector > span > input {
-  height: 1ex;
-  display: inline-block;
-}
 #range {
   cursor: pointer;
   width: 120px;
-  height: 1ex;
-  font-size: 17px;
+  vertical-align: text-bottom;
   -webkit-appearance: none;
 }
 #range::-webkit-slider-runnable-track {
@@ -30,9 +25,10 @@
   background-color: #fffffe;
 }
 input[type="range"]::-moz-range-track{
-  height: 1ex;
-  background:#edc;
+  height: 17px;
+  background: #eee;
   border:none;
+  border-radius: 4px;
 }
 
 input[type="range"]::-moz-range-thumb{

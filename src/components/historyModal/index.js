@@ -83,6 +83,11 @@ function HistoryModal() {
             </div>
           );
         })}
+        {projects.length===0?
+          <p className='history-project-info center'>这里似乎什么也没有哦! 😜</p>
+          :
+          <p className='history-project-info'>这么快就到底啦! 😜😜😜</p>
+        }
       </div>
     </div>
   );

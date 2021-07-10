@@ -55,7 +55,7 @@ function SaveModal() {
   }
 
   function handleSuccess() {
-    warning.saveProject = "成功保存到indexDb数据库咯！";
+    warning.saveProject = "作品保存成功咯！🎉🎉🎉";
     setWarning({ ...warning });
   }
 
@@ -100,6 +100,14 @@ function SaveModal() {
           <span className="export-btn" onClick={handleSave}>
             保存
           </span>
+        </div>
+
+        <h3>关于项目</h3>
+        <div className="export-item">
+          <span className="export-item-name">项目地址</span>
+          <a href="https://github.com/kfyidrig/svg-drawing-board" target="_blank">
+            <span className="export-btn">svg-drawing-board</span>
+          </a>
         </div>
         <p className="save-tips" data-active={!!warning.saveProject}>
           {warning.saveProject}

@@ -17,7 +17,7 @@
 .tool-bar {
   height: 100%;
   touch-action: pan-x;
-  width: 1330px;
+  width: 1400px;
   display: flow-root;
   white-space: nowrap;
 }

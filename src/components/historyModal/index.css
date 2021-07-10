@@ -56,6 +56,14 @@
   height: 157px;
   overflow: hidden;
 }
+.center{
+  position: relative;
+  top:30%;
+}
+.history-project-info{
+  color: #f25042;
+  text-align: center;
+}
 .history-project {
   margin: 15px auto;
   padding: 15px;
